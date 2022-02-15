@@ -1,0 +1,22 @@
+<?php
+return [
+    'mail-lists' => "Mail Lists",
+    'id' => 'ID',
+    'first_name' => 'First Name',
+    'last_name' => 'Last Name',
+    'email' => 'Email',
+    'email_verified_at' => 'Email Verified AT',
+    'tag' => 'Tag',
+    'country' => 'Country',
+    'created_at' => 'Created At',
+    'updated_at' => 'Updated At',
+    'action' => 'Action',
+    'add_mail' => 'Add Mail Address',
+    'first_name_placeholder' => 'Enter a first name',
+    'last_name_placeholder' => 'Enter a last name',
+    'email_placeholder' => 'Enter an email',
+    'email_verified_at_placeholder' => 'Enter an email verified at',
+    'tag_placeholder' => 'Enter a tag',
+    'view_mail' => 'View Email Address',
+    'edit_mail' => 'Edit Email Address',
+];

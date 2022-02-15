@@ -2,6 +2,7 @@
 
 namespace Dealskoo\MailList\Models;
 
+use Dealskoo\Country\Models\Country;
 use Dealskoo\MailList\Events\Subscribed;
 use Dealskoo\MailList\Events\Unsubscribed;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,13 +17,21 @@ class Email extends Model
         'first_name',
         'last_name',
         'email',
-        'email_verified',
+        'email_verified_at',
         'tag',
         'country_id'
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime'
     ];
 
     protected $dispatchesEvents = [
         'created' => Subscribed::class,
         'deleted' => Unsubscribed::class
-    ]
+    ];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }

@@ -18,7 +18,7 @@ class CreateEmailsTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique()->nullable(false);
-            $table->timestamp('email_verified')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('tag')->nullable();
             $table->unsignedBigInteger('country_id');
             $table->timestamps();
