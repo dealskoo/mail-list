@@ -2,7 +2,7 @@
 
 namespace Dealskoo\MailList\Models;
 
-use Dealskoo\Country\Traits\Country;
+use Dealskoo\Country\Traits\HasCountry;
 use Dealskoo\MailList\Events\Subscribed;
 use Dealskoo\MailList\Events\Unsubscribed;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Email extends Model
 {
-    use HasFactory, SoftDeletes, Country;
+    use HasFactory, SoftDeletes, HasCountry;
 
     protected $fillable = [
         'first_name',
