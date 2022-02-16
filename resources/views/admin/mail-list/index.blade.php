@@ -56,7 +56,7 @@
 @section('script')
     <script type="text/javascript">
         $(function () {
-            $('#mail-lists_table').dataTable({
+            let table = $('#mail-lists_table').dataTable({
                 "processing": true,
                 "serverSide": true,
                 "ajax": "{{ route('admin.mail-lists.index') }}",
@@ -78,21 +78,9 @@
                 "drawCallback": function () {
                     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
                     $('#mail-lists_table tr td:nth-child(10)').addClass('table-action');
-                    $('.delete-btn').on('click', function (e) {
-                        let table = $('#' + $(this).data('table'));
-                        let url = $(this).data('url');
-                        $.ajax({
-                            url: url,
-                            type: 'DELETE',
-                            processData: false,
-                            contentType: false,
-                            success: function (data) {
-                                table.DataTable().ajax.reload();
-                            }
-                        });
-                    });
+                    delete_listener();
                 }
-            })
+            });
         });
     </script>
 @endsection
