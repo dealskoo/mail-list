@@ -81,6 +81,10 @@
                     delete_listener();
                 }
             });
+
+            table.on('childRow.dt', function (e, row) {
+                delete_listener();
+            });
         });
     </script>
 @endsection
