@@ -23,7 +23,8 @@
                         <div class="row mb-2">
                             <div class="col-12">
                                 <a href="{{ route('admin.mail-lists.create') }}" class="btn btn-danger mb-2"><i
-                                        class="mdi mdi-plus-circle me-2"></i> {{ __('mail-list::mail-list.add_mail') }}</a>
+                                        class="mdi mdi-plus-circle me-2"></i> {{ __('mail-list::mail-list.add_mail') }}
+                                </a>
                             </div>
                         </div>
                     @endif
@@ -77,6 +78,19 @@
                 "drawCallback": function () {
                     $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
                     $('#mail-lists_table tr td:nth-child(10)').addClass('table-action');
+                    $('.delete-btn').on('click', function (e) {
+                        let table = $('#' + $(this).data('table'));
+                        let url = $(this).data('url');
+                        $.ajax({
+                            url: url,
+                            type: 'DELETE',
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                table.DataTable().ajax.reload();
+                            }
+                        });
+                    });
                 }
             })
         });

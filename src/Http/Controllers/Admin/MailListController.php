@@ -61,7 +61,7 @@ class MailListController extends Controller
             }
             $destroy_link = '';
             if ($can_destroy) {
-                $destroy_link = '<a href="javascript:void(0);" class="action-icon delete-btn" data-table="roles_table" data-url="' . route('admin.mail-lists.destroy', $email) . '"> <i class="mdi mdi-delete"></i></a>';
+                $destroy_link = '<a href="javascript:void(0);" class="action-icon delete-btn" data-table="mail-lists_table" data-url="' . route('admin.mail-lists.destroy', $email) . '"> <i class="mdi mdi-delete"></i></a>';
             }
             $row[] = $view_link . $edit_link . $destroy_link;
             $rows[] = $row;
