@@ -10,6 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class Event
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
     public $email;
 
     public function __construct(Email $email)
