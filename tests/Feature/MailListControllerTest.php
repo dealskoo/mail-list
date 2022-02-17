@@ -8,6 +8,7 @@ use Dealskoo\MailList\Models\Email;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Dealskoo\MailList\Tests\TestCase;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\URL;
 
 class MailListControllerTest extends TestCase
 {
@@ -17,13 +18,14 @@ class MailListControllerTest extends TestCase
     {
         parent::setUp();
         Country::factory(['alpha2' => config('country.default_alpha2')])->create();
+        URL::defaults([config('country.prefix') => \request()->country()->alpha2]);
     }
 
     public function test_handle()
     {
         Event::fake();
         $email = Email::factory()->make();
-        $response = $this->post(route('mail-list', [config('country.prefix') => request()->country()->alpha2]), $email->only([
+        $response = $this->post(route('mail-list'), $email->only([
             'first_name',
             'last_name',
             'email'
@@ -36,7 +38,7 @@ class MailListControllerTest extends TestCase
     {
         Event::fake();
         $email = Email::factory()->make();
-        $response = $this->post(route('mail-list', [config('country.prefix') => request()->country()->alpha2]), $email->only([
+        $response = $this->post(route('mail-list'), $email->only([
             'first_name',
             'last_name',
             'email'
