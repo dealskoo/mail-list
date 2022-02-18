@@ -96,6 +96,7 @@ class MailListController extends Controller
             'tag',
             'country_id'
         ]));
+        $email->tag = $email->tag ?: config('email-list.default_tag');
         $email->save();
         return back()->with('success', __('admin::admin.added_success'));
     }

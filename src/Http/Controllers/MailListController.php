@@ -26,6 +26,7 @@ class MailListController extends BaseController
             'tag'
         ]));
         $email->country_id = $request->country()->id;
+        $email->tag = $email->tag ?: config('email-list.default_tag');
         $email->save();
         if ($request->ajax()) {
             return ['success' => __('Thanks for subscribing!')];
