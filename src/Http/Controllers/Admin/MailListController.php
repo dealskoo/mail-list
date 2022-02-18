@@ -30,7 +30,9 @@ class MailListController extends Controller
         $desc = $request->input('order.0.dir', 'desc');
         $query = Email::query();
         if ($keyword) {
-            $query->where('name', 'like', '%' . $keyword . '%');
+            $query->where('first_name', 'like', '%' . $keyword . '%');
+            $query->orWhere('last_name', 'like', '%' . $keyword . '%');
+            $query->orWhere('email', 'like', '%' . $keyword . '%');
         }
         $query->orderBy($column, $desc);
         $count = $query->count();
