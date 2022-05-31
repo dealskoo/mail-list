@@ -8,10 +8,11 @@ use Dealskoo\MailList\Events\Unsubscribed;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 
 class Email extends Model
 {
-    use HasFactory, SoftDeletes, HasCountry;
+    use HasFactory, SoftDeletes, HasCountry, Searchable;
 
     protected $fillable = [
         'first_name',
@@ -29,4 +30,15 @@ class Email extends Model
         'created' => Subscribed::class,
         'deleted' => Unsubscribed::class
     ];
+
+    public function toSearchableArray()
+    {
+        return $this->only([
+            'first_name',
+            'last_name',
+            'email',
+            'tag',
+            'country_id'
+        ]);
+    }
 }
