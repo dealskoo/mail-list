@@ -51,7 +51,7 @@ class MailListServiceProvider extends ServiceProvider
 
         AdminMenu::route('admin.mail-lists.index', 'mail-list::mail-list.mail-lists', [], ['icon' => 'uil-envelope-alt', 'permission' => 'mail-lists.index'])->order(9);
 
-        PermissionManager::add(new Permission('mail-lists.index', 'Mail Lists'));
+        PermissionManager::add(new Permission('mail-lists.index', 'Mail List'));
         PermissionManager::add(new Permission('mail-lists.show', 'View Mail'), 'mail-lists.index');
         PermissionManager::add(new Permission('mail-lists.create', 'Create Mail'), 'mail-lists.index');
         PermissionManager::add(new Permission('mail-lists.edit', 'Edit Mail'), 'mail-lists.index');
