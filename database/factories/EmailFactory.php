@@ -18,7 +18,7 @@ class EmailFactory extends Factory
             'email' => $this->faker->unique()->email(),
             'email_verified_at' => $this->faker->dateTime,
             'tag' => $this->faker->slug,
-            'country_id' => Country::factory()->create(),
+            'country_id' => Country::factory(),
         ];
     }
 }
