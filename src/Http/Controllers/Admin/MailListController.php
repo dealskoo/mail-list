@@ -2,7 +2,6 @@
 
 namespace Dealskoo\MailList\Http\Controllers\Admin;
 
-use Carbon\Carbon;
 use Dealskoo\Admin\Http\Controllers\Controller;
 use Dealskoo\Country\Models\Country;
 use Dealskoo\MailList\Models\Email;
@@ -47,11 +46,11 @@ class MailListController extends Controller
             $row[] = $email->first_name;
             $row[] = $email->last_name;
             $row[] = $email->email;
-            $row[] = Carbon::parse($email->email_verified_at)->format('Y-m-d H:i:s');
+            $row[] = $email->email_verified_at->format('Y-m-d H:i:s');
             $row[] = $email->tag;
             $row[] = $email->country->name;
-            $row[] = Carbon::parse($email->created_at)->format('Y-m-d H:i:s');
-            $row[] = Carbon::parse($email->updated_at)->format('Y-m-d H:i:s');
+            $row[] = $email->created_at->format('Y-m-d H:i:s');
+            $row[] = $email->updated_at->format('Y-m-d H:i:s');
             $view_link = '';
             if ($can_view) {
                 $view_link = '<a href="' . route('admin.mail-lists.show', $email) . '" class="action-icon"><i class="mdi mdi-eye"></i></a>';
